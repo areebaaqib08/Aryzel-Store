@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aryzel Creation House | Kids Wear, Handbags &amp; Gadgets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div class="announce-bar">
+  <i class="fa-solid fa-truck-fast"></i>&nbsp; Free delivery on orders above Rs. 3000 &nbsp;|&nbsp; New arrivals every week ✨
+</div>
+
+<header>
+  <nav class="navbar">
+    <div class="logo-area">
+      <img src="logo.jpeg" alt="Aryzel Creation House logo" width="auto">
+      <div class="brand-text">
+        <span class="brand-name">Aryzel Creation House</span>
+        <span class="brand-tagline">Style . Grace . Glow</span>
+      </div>
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li>
+        <a href="products.html"><i class="fa-solid fa-bag-shopping"></i> Products <i class="fa-solid fa-chevron-down caret"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="products.html#kidwear"><span class="emoji-ic">👗</span> Kid Wear</a></li>
+          <li><a href="products.html#handbags"><span class="emoji-ic">👜</span> Handbags</a></li>
+          <li><a href="products.html#gadgets"><span class="emoji-ic">⌚</span> Gadgets</a></li>
+          <li><a href="products.html#jewelry"><span class="emoji-ic">💎</span> Jewelry</a></li>
+        </ul>
+      </li>
+      <li><a href="about.html"><i class="fa-solid fa-heart"></i> About Us</a></li>
+      <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search products...">
+        <button onclick="doSearch()"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+      <div class="icon-btn" title="Wishlist">
+        <i class="fa-regular fa-heart"></i>
+      </div>
+      <div class="icon-btn" id="cartIcon" title="Cart" onclick="toggleCartPopup()">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-badge" id="cartCount">0</span>
+      </div>
+      <button class="hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </nav>
+</header>
+
+<!-- ================= HERO BANNER ================= -->
+<section class="hero">
+  <div class="hero-bg-shine"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="eyebrow" style="justify-content:flex-start"><i class="fa-solid fa-gem"></i> Karachi's Trendiest Boutique</span>
+      <h1>Cute Styles. <span class="gold-shine">Glam Finds.</span><br>All Under One Roof.</h1>
+      <p>From adorable kidswear to glossy handbags and the latest gadgets — Aryzel Creation House brings handpicked, affordable treasures straight to your doorstep.</p>
+      <div class="hero-btns">
+        <a href="products.html" class="btn-glossy btn-pink">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="about.html" class="btn-outline">Our Story</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>500+</strong><span>Happy Customers</span></div>
+        <div class="stat"><strong>120+</strong><span>Products</span></div>
+        <div class="stat"><strong>4.9<i class="fa-solid fa-star"></i></strong><span>Avg Rating</span></div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hero-img-glow"></div>
+      <img id="heroImg" src="bannerpic.jpeg" alt="Aryzel Creation House products" width="auto">
+      <div class="floating-badge fb1"><i class="fa-solid fa-truck"></i> Fast Delivery</div>
+      <div class="floating-badge fb2"><i class="fa-solid fa-shield-halved"></i> 100% Quality</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CATEGORY STRIP ================= -->
+<section class="cat-strip">
+  <a href="products.html#kidwear" class="cat-card">
+    <div class="cat-ic">👗</div>
+    <h3>Kid Wear</h3>
+    <p>Cute &amp; comfy styles</p>
+  </a>
+  <a href="products.html#handbags" class="cat-card">
+    <div class="cat-ic">👜</div>
+    <h3>Handbags</h3>
+    <p>Elegant everyday carry</p>
+  </a>
+  <a href="products.html#gadgets" class="cat-card">
+    <div class="cat-ic">⌚</div>
+    <h3>Gadgets</h3>
+    <p>Smart &amp; trendy tech</p>
+  </a>
+  <a href="products.html#jewelry" class="cat-card">
+    <div class="cat-ic">💎</div>
+    <h3>Jewelry</h3>
+    <p>Shine on every occasion</p>
+  </a>
+</section>
+
+<!-- ================= CATEGORY DROPDOWN FILTER ================= -->
+<section class="section-pad" style="padding-bottom:0">
+  <div class="section-head center">
+    <span class="eyebrow">Handpicked For You</span>
+    <h2 class="section-title">Shop Our Collection</h2>
+    <p class="section-sub center">Choose a category from the dropdown to jump straight to it</p>
+  </div>
+  <div class="cat-dropdown-wrap">
+    <label for="categoryDropdown"><i class="fa-solid fa-filter"></i> Jump to category:</label>
+    <select id="categoryDropdown" onchange="jumpToCategory(this.value)">
+      <option value="" disabled selected>Select a category</option>
+      <option value="catKidwear">👗 Kid Wear</option>
+      <option value="catJewelry">💎 Jewelry</option>
+      <option value="catGadgets">⌚ Gadgets</option>
+    </select>
+  </div>
+</section>
+
+<!-- ================= KID WEAR SECTION ================= -->
+<section class="section-pad cat-section" id="catKidwear">
+  <h2 class="section-title" style="text-align:center; margin-bottom:8px">👗 Kid Wear</h2>
+  <p class="section-sub center" style="margin-bottom:36px">Soft, cute and comfy outfits for your little ones</p>
+  <div class="product-grid two-col" id="grid-kidwear"></div>
+  <div class="center" style="margin-top:30px">
+    <a href="products.html#kidwear" class="btn-outline">View All Kid Wear <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+</section>
+
+<!-- ================= JEWELRY SECTION ================= -->
+<section class="section-pad cat-section" id="catJewelry" style="background:var(--pink-pale)">
+  <h2 class="section-title" style="text-align:center; margin-bottom:8px">💎 Jewelry</h2>
+  <p class="section-sub center" style="margin-bottom:36px">Shine bright with our handpicked jewelry pieces</p>
+  <div class="product-grid two-col" id="grid-jewelry"></div>
+  <div class="center" style="margin-top:30px">
+    <a href="products.html#jewelry" class="btn-outline">View All Jewelry <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+</section>
+
+<!-- ================= GADGETS SECTION ================= -->
+<section class="section-pad cat-section" id="catGadgets">
+  <h2 class="section-title" style="text-align:center; margin-bottom:8px">⌚ Gadgets</h2>
+  <p class="section-sub center" style="margin-bottom:36px">Smart, trendy tech to upgrade your everyday</p>
+  <div class="product-grid two-col" id="grid-gadgets"></div>
+  <div class="center" style="margin-top:30px">
+    <a href="products.html#gadgets" class="btn-outline">View All Gadgets <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+</section>
+
+<!-- ================= WHY CHOOSE US ================= -->
+<section class="why-section">
+  <div class="why-inner">
+    <div class="why-card">
+      <i class="fa-solid fa-truck-fast"></i>
+      <h4>Fast Delivery</h4>
+      <p>Quick dispatch across Pakistan</p>
+    </div>
+    <div class="why-card">
+      <i class="fa-solid fa-coins"></i>
+      <h4>Best Prices</h4>
+      <p>Quality items at honest rates</p>
+    </div>
+    <div class="why-card">
+      <i class="fa-solid fa-rotate-left"></i>
+      <h4>Easy Exchange</h4>
+      <p>Hassle-free return policy</p>
+    </div>
+    <div class="why-card">
+      <i class="fa-solid fa-headset"></i>
+      <h4>Friendly Support</h4>
+      <p>We reply on WhatsApp fast</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REVIEWS ================= -->
+<section class="section-pad" style="background:var(--pink-pale)">
+  <div class="section-head center">
+    <span class="eyebrow">Customer Love</span>
+    <h2 class="section-title">What They Say</h2>
+    <p class="section-sub center">Real reviews from our Aryzel family — share yours below!</p>
+  </div>
+
+  <div class="reviews-grid" id="reviewsGrid"></div>
+
+  <div class="center" style="margin-top:30px">
+    <button class="btn-glossy btn-pink" onclick="openReviewModal()"><i class="fa-solid fa-pen"></i> Write a Review</button>
+  </div>
+</section>
+
+<!-- ============== REVIEW MODAL (popup) ============== -->
+<div class="overlay" id="reviewOverlay">
+  <div class="modal-box review-modal">
+    <button class="modal-close" onclick="closeReviewModal()"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-pad">
+      <span class="eyebrow"><i class="fa-solid fa-star"></i> Share Feedback</span>
+      <h2 class="section-title" style="font-size:26px">Write Your Review</h2>
+      <form id="reviewForm" onsubmit="submitReview(event)">
+        <div class="form-row">
+          <input type="text" placeholder="Your name" required id="revName">
+          <select id="revRating" required>
+            <option value="" disabled selected>Rating</option>
+            <option value="5">★★★★★ Excellent</option>
+            <option value="4">★★★★ Good</option>
+            <option value="3">★★★ Okay</option>
+          </select>
+        </div>
+        <textarea placeholder="Tell us about your experience..." rows="3" required id="revText"></textarea>
+
+        <label class="upload-box" id="uploadBox">
+          <input type="file" accept="image/*" id="revImage" onchange="previewReviewImage(event)" hidden>
+          <i class="fa-solid fa-camera"></i>
+          <span id="uploadText">Click to add a photo of your product</span>
+          <img id="revImgPreview" style="display:none">
+        </label>
+
+        <button type="submit" class="btn-glossy btn-gold" style="width:100%; justify-content:center; margin-top:10px;">
+          <i class="fa-solid fa-paper-plane"></i> Submit Review
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ============== CART POPUP ============== -->
+<div class="overlay" id="cartOverlay">
+  <div class="modal-box cart-modal">
+    <button class="modal-close" onclick="toggleCartPopup()"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-pad">
+      <h2 class="section-title" style="font-size:24px"><i class="fa-solid fa-bag-shopping"></i> Your Cart</h2>
+      <div id="cartItemsBox"></div>
+      <div class="cart-total-row">
+        <span>Total</span>
+        <strong id="cartTotalText">Rs. 0</strong>
+      </div>
+      <a href="contact.html" class="btn-glossy btn-pink" style="width:100%; justify-content:center;">
+        <i class="fa-solid fa-check"></i> Checkout via WhatsApp
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check"></i> <span id="toastMsg">Added to cart!</span></div>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="brand-name">Aryzel Creation House</div>
+      <p>Your one-stop boutique for adorable kidswear, glossy handbags, glowing jewelry and trendy gadgets — curated with love in Pakistan.</p>
+      <div class="footer-socials">
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="products.html#kidwear">Kid Wear</a></li>
+        <li><a href="products.html#handbags">Handbags</a></li>
+        <li><a href="products.html#gadgets">Gadgets</a></li>
+        <li><a href="products.html#jewelry">Jewelry</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get In Touch</h4>
+      <ul class="footer-contact">
+        <li><i class="fa-solid fa-user ic"></i> CEO: Areeba Aqib</li>
+        <li><i class="fa-solid fa-envelope ic"></i> aryzelcreationhouse@gmail.com</li>
+        <li><i class="fa-solid fa-phone ic"></i> 0370 0014029</li>
+        <li><i class="fa-solid fa-location-dot ic"></i> Karachi, Pakistan</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 <span>Aryzel Creation House</span>. All rights reserved. Founded by Areeba Aqib.
+  </div>
+</footer>
+
+<style>
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 80% 20%, var(--pink-pale), var(--cream) 60%);
+  padding: 70px 32px 50px;
+}
+.hero-bg-shine {
+  position: absolute;
+  top: -120px; right: -120px;
+  width: 420px; height: 420px;
+  background: radial-gradient(circle, var(--gold-light) 0%, transparent 70%);
+  opacity: 0.5;
+  border-radius: 50%;
+}
+.hero-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 50px;
+  position: relative;
+}
+.hero-text h1 {
+  font-size: 52px;
+  line-height: 1.18;
+  color: var(--text-dark);
+  margin: 14px 0 18px;
+}
+.gold-shine {
+  background: linear-gradient(90deg, var(--gold-deep), var(--gold), var(--gold-light), var(--gold));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shineMove 4s linear infinite;
+}
+@keyframes shineMove { to { background-position: 200% center; } }
+.hero-text p {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  max-width: 480px;
+  margin-bottom: 28px;
+}
+.hero-btns { display: flex; gap: 16px; margin-bottom: 40px; flex-wrap: wrap; }
+.hero-stats { display: flex; gap: 36px; }
+.hero-stats .stat { display: flex; flex-direction: column; }
+.hero-stats .stat strong { font-size: 26px; color: var(--pink-deep); font-family: 'Playfair Display', serif; }
+.hero-stats .stat strong i { color: var(--gold); font-size: 16px; margin-left: 3px; }
+.hero-stats .stat span { font-size: 12.5px; color: var(--text-muted); }
+
+.hero-image { position: relative; display: flex; justify-content: center; }
+.hero-img-glow {
+  position: absolute;
+  width: 90%; height: 90%;
+  background: radial-gradient(circle, var(--pink-light) 0%, transparent 70%);
+  opacity: 0.35;
+  border-radius: 50%;
+  filter: blur(10px);
+}
+.hero-image img {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  border-radius: 30px;
+  border: 3px solid var(--gold);
+  box-shadow: 0 30px 60px var(--shadow-pink);
+}
+.floating-badge {
+  position: absolute;
+  background: #fff;
+  padding: 10px 16px;
+  border-radius: 14px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--pink-deep);
+  box-shadow: 0 10px 26px var(--shadow-pink);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1.5px solid var(--gold-light);
+  animation: floatY 3s ease-in-out infinite;
+}
+.floating-badge i { color: var(--gold-deep); }
+.fb1 { top: 8%; left: -6%; animation-delay: 0s; }
+.fb2 { bottom: 10%; right: -4%; animation-delay: 1.5s; }
+@keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+
+.cat-strip {
+  max-width: 1280px;
+  margin: -34px auto 0;
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 0 32px;
+}
+.cat-card {
+  background: #fff;
+  border: 1.5px solid var(--gold-light);
+  border-radius: 20px;
+  padding: 26px 18px;
+  text-align: center;
+  box-shadow: 0 14px 34px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+}
+.cat-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--pink-main);
+  box-shadow: 0 20px 40px var(--shadow-pink);
+}
+.cat-ic { font-size: 38px; margin-bottom: 10px; }
+.cat-card h3 { font-size: 17px; color: var(--pink-deep); margin-bottom: 4px; }
+.cat-card p { font-size: 12.5px; color: var(--text-muted); }
+
+.section-pad { max-width: 1280px; margin: 0 auto; padding: 90px 32px; }
+.section-head { max-width: 600px; margin-bottom: 50px; }
+
+.why-section { background: linear-gradient(135deg, var(--dark), var(--dark-soft)); padding: 60px 32px; }
+.why-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.why-card { text-align: center; color: #fff; padding: 20px; }
+.why-card i { font-size: 30px; color: var(--gold-light); margin-bottom: 14px; }
+.why-card h4 { font-size: 16px; margin-bottom: 6px; color: #fff; }
+.why-card p { font-size: 13px; color: #cdb3bd; }
+
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+
+.modal-pad { padding: 36px 36px 30px; }
+.form-row { display: flex; gap: 12px; margin: 18px 0 12px; }
+.form-row input, .form-row select {
+  flex: 1; padding: 12px 14px; border: 1.5px solid var(--gold-light);
+  border-radius: 12px; font-family: 'Poppins'; font-size: 14px; outline: none;
+}
+#reviewForm textarea {
+  width: 100%; padding: 12px 14px; border: 1.5px solid var(--gold-light);
+  border-radius: 12px; font-family: 'Poppins'; font-size: 14px; outline: none; resize: vertical;
+}
+.form-row input:focus, .form-row select:focus, #reviewForm textarea:focus { border-color: var(--pink-main); }
+.upload-box {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  border: 2px dashed var(--gold-light); border-radius: 14px; padding: 24px;
+  margin: 14px 0; cursor: pointer; color: var(--text-muted); font-size: 13px;
+  transition: all 0.3s ease;
+}
+.upload-box:hover { border-color: var(--pink-main); background: var(--pink-pale); }
+.upload-box i { font-size: 26px; color: var(--gold-deep); }
+.upload-box img { max-height: 140px; border-radius: 10px; margin-top: 6px; }
+
+.cart-modal .modal-pad, .review-modal .modal-pad { padding: 36px 32px; }
+#cartItemsBox { margin: 20px 0; max-height: 320px; overflow-y: auto; }
+.cart-line {
+  display: flex; align-items: center; gap: 14px; padding: 12px 0;
+  border-bottom: 1px solid var(--pink-pale);
+}
+.cart-line img { width: 56px; height: 56px; border-radius: 10px; object-fit: cover; border: 1px solid var(--gold-light); }
+.cart-line .ci-info { flex: 1; }
+.cart-line .ci-info h5 { font-size: 14px; margin-bottom: 3px; }
+.cart-line .ci-info span { font-size: 12.5px; color: var(--text-muted); }
+.cart-line .ci-remove { color: var(--pink-deep); cursor: pointer; font-size: 16px; }
+.cart-empty { text-align: center; color: var(--text-muted); padding: 30px 0; font-size: 14px; }
+.cart-total-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 0; border-top: 2px dashed var(--gold-light); margin-bottom: 16px;
+  font-size: 16px;
+}
+.cart-total-row strong { color: var(--pink-deep); font-size: 20px; }
+
+@media (max-width: 980px) {
+  .hero-inner { grid-template-columns: 1fr; text-align: center; }
+  .hero-text p { margin: 0 auto 28px; }
+  .hero-btns, .hero-stats { justify-content: center; }
+  .hero-image { order: -1; margin-bottom: 20px; }
+  .cat-strip { grid-template-columns: repeat(2, 1fr); margin-top: 30px; }
+  .why-inner { grid-template-columns: repeat(2, 1fr); }
+  .reviews-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .hero-text h1 { font-size: 36px; }
+  .form-row { flex-direction: column; }
+}
+</style>
+
+<script src="script.js"></script>
+<script>
+  renderAllCategorySections();
+  renderReviews();
+</script>
+</body>
+</html>

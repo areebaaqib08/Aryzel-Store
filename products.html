@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Products | Aryzel Creation House</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div class="announce-bar">
+  <i class="fa-solid fa-truck-fast"></i>&nbsp; Free delivery on orders above Rs. 3000 &nbsp;|&nbsp; New arrivals every week ✨
+</div>
+
+<header>
+  <nav class="navbar">
+    <div class="logo-area">
+      <img src="logo.jpeg" alt="Aryzel Creation House logo" width="auto-fit">
+      <div class="brand-text">
+        <span class="brand-name">Aryzel Creation House</span>
+        <span class="brand-tagline">Style . Grace . Glow</span>
+      </div>
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li>
+        <a href="products.html" class="active"><i class="fa-solid fa-bag-shopping"></i> Products <i class="fa-solid fa-chevron-down caret"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="products.html#kidwear"><span class="emoji-ic">👗</span> Kid Wear</a></li>
+          <li><a href="products.html#handbags"><span class="emoji-ic">👜</span> Handbags</a></li>
+          <li><a href="products.html#gadgets"><span class="emoji-ic">⌚</span> Gadgets</a></li>
+          <li><a href="products.html#jewelry"><span class="emoji-ic">💎</span> Jewelry</a></li>
+        </ul>
+      </li>
+      <li><a href="about.html"><i class="fa-solid fa-heart"></i> About Us</a></li>
+      <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search products...">
+        <button onclick="doSearch()"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+      <div class="icon-btn" title="Wishlist">
+        <i class="fa-regular fa-heart"></i>
+      </div>
+      <div class="icon-btn" id="cartIcon" title="Cart" onclick="toggleCartPopup()">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-badge" id="cartCount">0</span>
+      </div>
+      <button class="hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </nav>
+</header>
+
+<section class="page-banner">
+  <h1>Our Products</h1>
+  <div class="crumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Products</div>
+</section>
+
+<section class="section-pad" style="padding-top:60px">
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all"><i class="fa-solid fa-grip"></i> All</button>
+    <button class="filter-btn" data-filter="kidwear">👗 Kid Wear</button>
+    <button class="filter-btn" data-filter="handbags">👜 Handbags</button>
+    <button class="filter-btn" data-filter="gadgets">⌚ Gadgets</button>
+    <button class="filter-btn" data-filter="jewelry">💎 Jewelry</button>
+  </div>
+
+  <p id="resultsInfo" class="results-info"></p>
+
+  <div class="product-grid" id="productsGrid"></div>
+
+  <div class="no-results" id="noResults" style="display:none">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <h3>No products found</h3>
+    <p>Try a different search term or category.</p>
+  </div>
+
+</section>
+
+<!-- ============== CART POPUP ============== -->
+<div class="overlay" id="cartOverlay">
+  <div class="modal-box cart-modal">
+    <button class="modal-close" onclick="toggleCartPopup()"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-pad">
+      <h2 class="section-title" style="font-size:24px"><i class="fa-solid fa-bag-shopping"></i> Your Cart</h2>
+      <div id="cartItemsBox"></div>
+      <div class="cart-total-row">
+        <span>Total</span>
+        <strong id="cartTotalText">Rs. 0</strong>
+      </div>
+      <a href="contact.html" class="btn-glossy btn-pink" style="width:100%; justify-content:center;">
+        <i class="fa-solid fa-check"></i> Checkout via WhatsApp
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check"></i> <span id="toastMsg">Added to cart!</span></div>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="brand-name">Aryzel Creation House</div>
+      <p>Your one-stop boutique for adorable kidswear, glossy handbags, glowing jewelry and trendy gadgets — curated with love in Pakistan.</p>
+      <div class="footer-socials">
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="products.html#kidwear">Kid Wear</a></li>
+        <li><a href="products.html#handbags">Handbags</a></li>
+        <li><a href="products.html#gadgets">Gadgets</a></li>
+        <li><a href="products.html#jewelry">Jewelry</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get In Touch</h4>
+      <ul class="footer-contact">
+        <li><i class="fa-solid fa-user ic"></i> CEO: Areeba Aqib</li>
+        <li><i class="fa-solid fa-envelope ic"></i> aryzelcreationhouse@gmail.com</li>
+        <li><i class="fa-solid fa-phone ic"></i> 0370 0014029</li>
+        <li><i class="fa-solid fa-location-dot ic"></i> Karachi, Pakistan</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 <span>Aryzel Creation House</span>. All rights reserved. Founded by Areeba Aqib.
+  </div>
+</footer>
+
+<style>
+.filter-bar {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.filter-btn {
+  padding: 11px 24px;
+  border: 1.5px solid var(--gold-light);
+  border-radius: 30px;
+  background: #fff;
+  color: var(--text-dark);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.filter-btn:hover {
+  border-color: var(--pink-main);
+  color: var(--pink-deep);
+}
+.filter-btn.active {
+  background: linear-gradient(135deg, var(--pink-main), var(--pink-deep));
+  border-color: var(--pink-deep);
+  color: #fff;
+  box-shadow: 0 8px 20px var(--shadow-pink);
+}
+.results-info {
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--text-muted);
+  margin-bottom: 30px;
+}
+.results-info strong { color: var(--pink-deep); }
+.no-results {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+}
+.no-results i { font-size: 40px; color: var(--gold-light); margin-bottom: 16px; }
+.no-results h3 { color: var(--text-dark); margin-bottom: 8px; }
+
+@media (max-width: 560px) {
+  .filter-bar { gap: 8px; }
+  .filter-btn { padding: 9px 16px; font-size: 12.5px; }
+}
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+
+.product-card{
+  background:#fff;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  transition:.3s;
+}
+
+.product-card:hover{
+  transform:translateY(-8px);
+}
+
+.product-img-wrap img{
+  width:100%;
+  height:280px;
+  object-fit:cover;
+}
+
+.product-info{
+  padding:18px;
+}
+</style>
+
+<script src="script.js"></script>
+<script>
+ /* ===================================================
+   ARYZEL CREATION HOUSE — All JavaScript in one file
+   Contains: Product data, Cart logic, Reviews logic,
+   Main UI interactions, Category sections, Quick View
+   =================================================== */
+
+/* ===================================================
+   1. PRODUCT DATABASE (Array of Objects) — 28 products total
+   =================================================== */
+const PRODUCTS = [
+  { id: 1, name: "Floral Summer Frock", category: "kidwear", price: 850, img: "frock.jpeg", rating: 5, badge: "Bestseller", desc: "Soft cotton jersey frock with floral print, perfect for ages 1-8 years. Breathable fabric for everyday comfort." },
+  { id: 2, name: "Boys truck shortwear", category: "kidwear", price: 800, img: "boys truck wear.jpeg", rating: 4, badge: "New", desc: "Trendy truck shortwear for boys, durable stitching with adjustable waist." },
+  { id: 3, name: "Princess sleeping Dress", category: "kidwear", price: 850, img: "sleepwear.jpeg", rating: 5, badge: "Bestseller", desc: "Sparkly sleepy dress with tulle layers." },
+  { id: 4, name: "Unisex kidwear", category: "kidwear", price: 799, oldPrice: null, img: "unisex shortwear.jpeg", rating: 4, badge: "", desc: "best for summer,easy to wear, also for picnic" },
+
+  { id: 5, name: "Leather Tote Bag", category: "handbags", price: 1850,img: "tote bag.jpg", rating: 5, badge: "Bestseller", desc: "Spacious tan tote bag with premium PU leather finish, fits laptop & essentials." },
+  { id: 6, name: "premium girls bag", category: "handbags", price: 2500, img: "school bag.jpg", rating: 5, badge: "New", desc: "Compact quilted easy to wear feel comfort and huge capacity." },
+  { id: 7, name: "Kid pricess bag", category: "handbags", price: 1500, oldPrice: null, img: "kid bag.jpg", rating: 5, badge: "", desc: "Elegant look for cute baby girl" },
+  { id: 8, name: "COzy BAG", category: "handbags", price: 2499,img: "cozy bAG.jpg", rating: 4, badge: "New", desc: "look classy to wear when students goes anywhere to wear this bag" },
+
+  { id: 9, name: "Wireless Earpods Pro", category: "gadgets", price: 1100, oldPrice: 1800, img:"airpods.jpg", rating: 5, badge: "Bestseller", desc: "Noise-cancelling wireless earbuds with 20hr battery backup and touch controls." },
+  { id: 10, name: "Smart Ultra Watch", category: "gadgets", price: 1999, oldPrice: 3800, img: "ulta max.jpg", rating: 4, badge: "New", desc: "I20 ULTRA MAX 7in1 Utra withWireless EarBuds Model Smart Watch."},
+  { id: 11, name: "STORAGE BOX", category: "gadgets", price: 999, oldPrice: null, img: "storagebox.png", rating: 4, badge: "", desc: "Adjustable light weight box easy to carry." },
+  { id: 12, name: "Mobile Holder", category: "gadgets", price: 250, oldPrice: 350, img: "mobileholder.jpeg", rating: 5, badge: "", desc: " Self Adhesive D Shape Mobile/Remote Holder(Mix/Random colour)." },
+
+  { id: 13, name: "Zarqoon Jewelry Set", category: "jewelry", price: 750, oldPrice: 999, img:"zarqoonset.jpg", rating: 5, badge: "Bestseller", desc: "look beauty when girl wear ." },
+  { id: 14, name: "Bow Stainless Bracelete", category: "jewelry", price: 350, oldPrice: 550, img: "stainless.jpg", rating: 4, badge: "New", desc: "Adjustable bow bracelete with intricate detailing, tarnish-resistant coating."},
+  { id: 15, name: "Elegance CLIP", category: "jewelry", price: 250, oldPrice: null, img: "cuteclip.jpg", rating: 4, badge: "", desc: "Bold statement clips to elevate any outfit, lightweight for all-day wear." },
+  { id: 16, name: "TULIP Necklace", category: "jewelry", price: 450, oldPrice: 690, img: "tulipchain.jpg", rating: 5, badge: "", desc: "Trendy Tulip chain necklace, mixes delicate and bold chain styles." },
+
+  { id: 17, name: "Girls SILK Stitched Suit", category: "kidwear", price: 2850, oldPrice: 3500, img: "embroided suit.jpg", rating: 5, badge: "New", desc: "Three-piece china raw Silk embroided suit for girls, soft and breathable for everyday wear." },
+  { id: 18, name: "Boys Polo Shirt Trouser", category: "kidwear", price: 850, oldPrice: 1000, img: "polo suit.jpg", rating: 4, badge: "", desc: "soft cotton jersey for 1 t 10 yr boys" },
+  { id: 19, name: "Baby Romper Set", category: "kidwear", price: 350, oldPrice: null, img: "romper.jpg", rating: 5, badge: "Bestseller", desc: "Adorable soft romper set for babies, easy snap buttons for quick changing." },
+
+  { id: 20, name: "girl Crossbody Bag", category: "handbags", price: 790, oldPrice: 1500, img: "crossbody.jpg", rating: 5, badge: "Girls fashion crossbody bag with adjustable strap fits all daily essentials." },
+  { id: 21, name: "Cherry Moon Bag", category: "handbags", price: 950, oldPrice: 1200, img: "cherrymoon bag.jpg", rating: 4, badge: "", desc: "Lightweight cozy with cherry keychain, perfect for beach days and summer outings." },
+  { id: 22, name: "Chai Tote Bag", category: "handbags", price: 2300, oldPrice: 3400, img: "chai tote bag.jpg", rating: 5, badge: "Bestseller", desc: "Professional structured satchel with laptop compartment, great for work." },
+
+  { id: 23, name: "ROLEX SUBMINAR", category: "gadgets", price: 2500, oldPrice: 4400, img: "Rolex watch.jpeg", rating: 5, badge: "New", desc: "Affordable ROLEX LOOK watch, and long battery life." },
+  { id: 24, name: "Electric Iron", category: "gadgets", price: 1400, oldPrice: 1700, img: "electric iron.jpg", rating: 4, badge: "", desc: "Light weght portable electric Iron with reseonale price." },
+  { id: 25, name: "Electric Egg Beater", category: "gadgets", price: 1499, oldPrice: null, img: "electric beater.jpg", rating: 5, badge: "Bestseller", desc: " 2in1 Electric Scarlett Hand Mixer with 7 Speed Egg Beater and Chrome Beater & Dough Hook." },
+
+  { id: 26, name: "Viral Tulip Bracelet", category: "jewelry", price: 550, oldPrice: 700, img: "tulipbracelet.jpg", rating: 4, badge: "New", desc: "Viral trendy TULIP bracelete lightweight and perfect for daily wear." },
+  { id: 27, name: "Charm SET", category: "jewelry", price: 750, oldPrice: 900, img: "jewel set.jpg", rating: 5, badge: "Bestseller", desc: "Fancy Beautiful 6Pc Watch Gift Box For girls." },
+  { id: 28, name: "Scrunchies Watch", category: "jewelry", price: 650, oldPrice: 900, img: "SCRUNCH WATCH.jpg", rating: 5, badge: "", desc: "Traditional fancy look, perfect for weddings and festive occasions." }
+  
+];
+
+const CATEGORY_LABELS = {
+  kidwear: "Kid Wear",
+  handbags: "Handbags",
+  gadgets: "Gadgets",
+  jewelry: "Jewelry"
+};
+
+/* ===================================================
+   2. CART LOGIC (Functions + Array methods + Conditionals)
+   =================================================== */
+
+function getCart() {
+  return JSON.parse(localStorage.getItem("aryzel_cart") || "[]");
+}
+
+function saveCart(cart) {
+  localStorage.setItem("aryzel_cart", JSON.stringify(cart));
+  updateCartCount();
+}
+
+function addToCart(productId) {
+  const product = PRODUCTS.find(p => p.id === productId);
+  if (!product) return;
+
+  let cart = getCart();
+  const existing = cart.find(item => item.id === productId);
+
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    cart.push({ id: product.id, name: product.name, price: product.price, img: product.img, qty: 1 });
+  }
+
+  saveCart(cart);
+  showToast(`${product.name} added to cart!`);
+  renderCartPopup();
+}
+
+function removeFromCart(productId) {
+  let cart = getCart().filter(item => item.id !== productId);
+  saveCart(cart);
+  renderCartPopup();
+}
+
+function updateCartCount() {
+  const cart = getCart();
+  const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+  const badge = document.getElementById("cartCount");
+  if (badge) badge.textContent = totalQty;
+}
+
+function getCartTotal() {
+  const cart = getCart();
+  return cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+}
+
+function renderCartPopup() {
+  const box = document.getElementById("cartItemsBox");
+  const totalText = document.getElementById("cartTotalText");
+  if (!box) return;
+
+  const cart = getCart();
+
+  if (cart.length === 0) {
+    box.innerHTML = `<div class="cart-empty"><i class="fa-solid fa-bag-shopping" style="font-size:32px; color:var(--gold-light); margin-bottom:10px; display:block;"></i>Your cart is empty.<br>Start adding some lovely picks!</div>`;
+  } else {
+    box.innerHTML = cart.map(item => `
+      <div class="cart-line">
+        <img src="${item.img}" alt="${item.name}">
+        <div class="ci-info">
+          <h5>${item.name}</h5>
+          <span>Qty: ${item.qty} &times; Rs. ${item.price.toLocaleString()}</span>
+        </div>
+        <i class="fa-solid fa-trash ci-remove" onclick="removeFromCart(${item.id})"></i>
+      </div>
+    `).join("");
+  }
+
+  if (totalText) totalText.textContent = `Rs. ${getCartTotal().toLocaleString()}`;
+}
+
+function toggleCartPopup() {
+  const overlay = document.getElementById("cartOverlay");
+  if (!overlay) return;
+  renderCartPopup();
+  overlay.classList.toggle("active");
+}
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  const msg = document.getElementById("toastMsg");
+  if (!toast) return;
+  msg.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(() => toast.classList.remove("show"), 2600);
+}
+
+document.addEventListener("DOMContentLoaded", updateCartCount);
+
+/* ===================================================
+   3. REVIEWS LOGIC (Array + Functions + Conditionals)
+   =================================================== */
+
+const DEFAULT_REVIEWS = [
+  { name: "Sana Malik", rating: 5, text: "The kids frock I ordered was even prettier in person! Fabric quality is amazing and delivery was super fast.", img: "https://placehold.co/300x200/ffe3ee/d61f69?text=Customer+Photo" },
+  { name: "Hira Fatima", rating: 5, text: "Bought the tan tote bag, gets compliments every time I carry it. Worth every rupee!", img: "" },
+  { name: "Ayesha Noor", rating: 4, text: "Great gadgets selection, my earbuds arrived well packed. Will definitely order again.", img: "" }
+];
+
+function getReviews() {
+  const stored = localStorage.getItem("aryzel_reviews");
+  if (!stored) {
+    localStorage.setItem("aryzel_reviews", JSON.stringify(DEFAULT_REVIEWS));
+    return DEFAULT_REVIEWS;
+  }
+  return JSON.parse(stored);
+}
+
+function saveReviews(reviews) {
+  localStorage.setItem("aryzel_reviews", JSON.stringify(reviews));
+}
+
+function starString(n) {
+  return "★".repeat(n) + "☆".repeat(5 - n);
+}
+
+function renderReviews() {
+  const grid = document.getElementById("reviewsGrid");
+  if (!grid) return;
+
+  const reviews = getReviews();
+
+  grid.innerHTML = reviews.map(r => `
+    <div class="review-card">
+      ${r.img ? `<img src="${r.img}" alt="Review photo from ${r.name}" class="review-img">` : ""}
+      <div class="review-stars">${starString(r.rating)}</div>
+      <p class="review-text">"${r.text}"</p>
+      <div class="review-author"><i class="fa-solid fa-circle-user"></i> ${r.name}</div>
+    </div>
+  `).join("");
+}
+
+function openReviewModal() {
+  document.getElementById("reviewOverlay").classList.add("active");
+}
+
+function closeReviewModal() {
+  document.getElementById("reviewOverlay").classList.remove("active");
+}
+
+let _pendingReviewImage = "";
+
+function previewReviewImage(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    _pendingReviewImage = e.target.result;
+    const preview = document.getElementById("revImgPreview");
+    const uploadText = document.getElementById("uploadText");
+    preview.src = _pendingReviewImage;
+    preview.style.display = "block";
+    uploadText.textContent = "Photo selected — click to change";
+  };
+  reader.readAsDataURL(file);
+}
+
+function submitReview(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("revName").value.trim();
+  const rating = parseInt(document.getElementById("revRating").value, 10);
+  const text = document.getElementById("revText").value.trim();
+
+  if (!name || !rating || !text) return;
+
+  const reviews = getReviews();
+  reviews.unshift({ name, rating, text, img: _pendingReviewImage });
+  saveReviews(reviews);
+
+  document.getElementById("reviewForm").reset();
+  document.getElementById("revImgPreview").style.display = "none";
+  document.getElementById("uploadText").textContent = "Click to add a photo of your product";
+  _pendingReviewImage = "";
+
+  closeReviewModal();
+  renderReviews();
+  showToast("Thank you! Your review has been posted.");
+}
+
+/* ===================================================
+   4. MAIN UI INTERACTIONS (Navbar, Search, Mobile menu)
+   =================================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+  const hamburger = document.getElementById("hamburgerBtn");
+  const navLinks = document.getElementById("navLinks");
+
+  if (hamburger && navLinks) {
+    hamburger.addEventListener("click", function () {
+      navLinks.classList.toggle("open");
+    });
+
+    const dropdownParents = navLinks.querySelectorAll("li");
+    dropdownParents.forEach(function (li) {
+      const sub = li.querySelector(".dropdown-menu");
+      if (!sub) return;
+      const link = li.querySelector("a");
+      link.addEventListener("click", function (e) {
+        if (window.innerWidth <= 880) {
+          e.preventDefault();
+          li.classList.toggle("dropdown-open");
+        }
+      });
+    });
+  }
+
+  document.querySelectorAll(".overlay").forEach(function (overlay) {
+    overlay.addEventListener("click", function (e) {
+      if (e.target === overlay) overlay.classList.remove("active");
+    });
+  });
+});
+
+function doSearch() {
+  const input = document.getElementById("searchInput");
+  const query = input ? input.value.trim() : "";
+  if (!query) return;
+  window.location.href = "products.html?search=" + encodeURIComponent(query);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const searchInput = document.getElementById("searchInput");
+  if (searchInput) {
+    searchInput.addEventListener("keyup", function (e) {
+      if (e.key === "Enter") doSearch();
+    });
+  }
+});
+
+/* ===================================================
+   5. STAR RATING + PRODUCT CARD BUILDER
+   =================================================== */
+
+function starHtml(n) {
+  let html = "";
+  for (let i = 1; i <= 5; i++) {
+    html += i <= n ? '<i class="fa-solid fa-star"></i>' : '<i class="fa-regular fa-star"></i>';
+  }
+  return html;
+}
+
+function productCardHtml(p) {
+  const discount = p.oldPrice ? Math.round(100 - (p.price / p.oldPrice) * 100) : null;
+  return `
+    <div class="product-card">
+      ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}
+      ${discount ? `<span class="product-discount">-${discount}%</span>` : ""}
+      <div class="product-img-wrap">
+        <img src="${p.img}" alt="${p.name}">
+        <button class="quick-view-btn" onclick="openQuickView(${p.id})"><i class="fa-solid fa-eye"></i> Quick View</button>
+      </div>
+      <div class="product-info">
+        <span class="product-cat-tag">${CATEGORY_LABELS[p.category]}</span>
+        <h4>${p.name}</h4>
+        <div class="product-stars">${starHtml(p.rating)}</div>
+        <div class="product-price-row">
+          <span class="price-now">Rs. ${p.price.toLocaleString()}</span>
+          ${p.oldPrice ? `<span class="price-old">Rs. ${p.oldPrice.toLocaleString()}</span>` : ""}
+        </div>
+        <button class="btn-glossy btn-pink add-cart-btn" onclick="addToCart(${p.id})">
+          <i class="fa-solid fa-cart-plus"></i> Add to Cart
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+/* ===================================================
+   6. CATEGORY SECTIONS (Home page — 2 products per section)
+   =================================================== */
+
+const categorySortState = {
+  kidwear: "default",
+  jewelry: "default",
+  gadgets: "default"
+};
+
+function renderCategorySection(categoryName) {
+  const grid = document.getElementById("grid-" + categoryName);
+  if (!grid) return;
+
+  let categoryProducts = PRODUCTS.filter(function (product) {
+    return product.category === categoryName;
+  });
+
+  categoryProducts = sortProductArray(categoryProducts, categorySortState[categoryName]);
+
+  const twoProducts = categoryProducts.slice(0, 2);
+
+  if (twoProducts.length === 0) {
+    grid.innerHTML = `<p style="color:var(--text-muted); font-size:14px;">No products found in this category yet.</p>`;
+  } else {
+    grid.innerHTML = twoProducts.map(productCardHtml).join("");
+  }
+}
+
+function sortProductArray(productArray, sortType) {
+  const sortedArray = productArray.slice();
+
+  switch (sortType) {
+    case "lowhigh":
+      sortedArray.sort(function (a, b) { return a.price - b.price; });
+      break;
+
+    case "highlow":
+      sortedArray.sort(function (a, b) { return b.price - a.price; });
+      break;
+
+    case "rating":
+      sortedArray.sort(function (a, b) { return b.rating - a.rating; });
+      break;
+
+    default:
+      sortedArray.sort(function (a, b) {
+        const aIsBestseller = a.badge === "Bestseller" ? 1 : 0;
+        const bIsBestseller = b.badge === "Bestseller" ? 1 : 0;
+        return bIsBestseller - aIsBestseller;
+      });
+      break;
+  }
+
+  return sortedArray;
+}
+
+function sortCategorySection(categoryName, chosenSort) {
+  categorySortState[categoryName] = chosenSort;
+  renderCategorySection(categoryName);
+}
+
+function renderAllCategorySections() {
+  const categoriesToShow = ["kidwear", "jewelry", "gadgets"];
+
+  categoriesToShow.forEach(function (categoryName) {
+    renderCategorySection(categoryName);
+  });
+}
+
+function jumpToCategory(sectionId) {
+  if (!sectionId) return;
+  const section = document.getElementById(sectionId);
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
+/* ===================================================
+   7. QUICK VIEW MODAL
+   =================================================== */
+
+function openQuickView(productId) {
+  const product = PRODUCTS.find(p => p.id === productId);
+  if (!product) return;
+
+  let overlay = document.getElementById("quickViewOverlay");
+  if (!overlay) {
+    overlay = document.createElement("div");
+    overlay.className = "overlay";
+    overlay.id = "quickViewOverlay";
+    overlay.innerHTML = `
+      <div class="modal-box quickview-modal">
+        <button class="modal-close" onclick="closeQuickView()"><i class="fa-solid fa-xmark"></i></button>
+        <div id="quickViewContent"></div>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+    overlay.addEventListener("click", function (e) {
+      if (e.target === overlay) closeQuickView();
+    });
+  }
+
+  const discount = product.oldPrice ? Math.round(100 - (product.price / product.oldPrice) * 100) : null;
+
+  document.getElementById("quickViewContent").innerHTML = `
+    <div class="qv-grid">
+      <div class="qv-img">
+        <img src="${product.img}" alt="${product.name}">
+      </div>
+      <div class="qv-info">
+        <span class="product-cat-tag">${CATEGORY_LABELS[product.category]}</span>
+        <h2>${product.name}</h2>
+        <div class="product-stars" style="margin:8px 0">${starHtml(product.rating)}</div>
+        <div class="product-price-row" style="margin-bottom:16px">
+          <span class="price-now" style="font-size:24px">Rs. ${product.price.toLocaleString()}</span>
+          ${product.oldPrice ? `<span class="price-old">Rs. ${product.oldPrice.toLocaleString()}</span>` : ""}
+          ${discount ? `<span class="product-discount" style="position:static">-${discount}%</span>` : ""}
+        </div>
+        <p class="qv-desc">${product.desc}</p>
+        <div class="qv-qty-row">
+          <label>Quantity</label>
+          <div class="qty-control">
+            <button onclick="changeQty(-1)">−</button>
+            <span id="qvQty">1</span>
+            <button onclick="changeQty(1)">+</button>
+          </div>
+        </div>
+        <button class="btn-glossy btn-pink" style="width:100%; justify-content:center; margin-top:18px;" onclick="addQuickViewToCart(${product.id})">
+          <i class="fa-solid fa-cart-plus"></i> Add to Cart
+        </button>
+      </div>
+    </div>
+  `;
+
+  window._qvQty = 1;
+  overlay.classList.add("active");
+}
+
+function changeQty(delta) {
+  window._qvQty = Math.max(1, (window._qvQty || 1) + delta);
+  document.getElementById("qvQty").textContent = window._qvQty;
+}
+
+function addQuickViewToCart(productId) {
+  const qty = window._qvQty || 1;
+  for (let i = 0; i < qty; i++) addToCart(productId);
+  closeQuickView();
+}
+
+function closeQuickView() {
+  const overlay = document.getElementById("quickViewOverlay");
+  if (overlay) overlay.classList.remove("active");
+}/* PRODUCTS PAGE RENDER */
+
+let currentFilter = "all";
+
+function renderProducts(filter = "all") {
+
+  const grid = document.getElementById("productsGrid");
+  const info = document.getElementById("resultsInfo");
+  const noResults = document.getElementById("noResults");
+
+  let products = PRODUCTS;
+
+  const params = new URLSearchParams(window.location.search);
+  const search = params.get("search");
+
+  if (filter !== "all") {
+    products = products.filter(p => p.category === filter);
+  }
+
+  if (search) {
+    products = products.filter(p =>
+      p.name.toLowerCase().includes(search.toLowerCase()) ||
+      p.category.toLowerCase().includes(search.toLowerCase())
+    );
+  }
+
+  info.innerHTML = `<strong>${products.length}</strong> Products Found`;
+
+  if (products.length === 0) {
+    grid.innerHTML = "";
+    noResults.style.display = "block";
+    return;
+  }
+
+  noResults.style.display = "none";
+  grid.innerHTML = products.map(productCardHtml).join("");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  renderProducts();
+
+  document.querySelectorAll(".filter-btn").forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+      document.querySelectorAll(".filter-btn").forEach(b =>
+        b.classList.remove("active")
+      );
+
+      btn.classList.add("active");
+
+      currentFilter = btn.dataset.filter;
+
+      renderProducts(currentFilter);
+
+    });
+
+  });
+
+});
+
+</script>
+</body>
+</html>

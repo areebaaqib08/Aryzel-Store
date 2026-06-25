@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | Aryzel Creation House</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div class="announce-bar">
+  <i class="fa-solid fa-truck-fast"></i>&nbsp; Free delivery on orders above Rs. 3000 &nbsp;|&nbsp; New arrivals every week ✨
+</div>
+
+<header>
+  <nav class="navbar">
+    <div class="logo-area">
+      <img src="images/logo.png" alt="Aryzel Creation House logo" onerror="this.src='https://placehold.co/100x100/d61f69/ffffff?text=AC'">
+      <div class="brand-text">
+        <span class="brand-name">Aryzel Creation House</span>
+        <span class="brand-tagline">Style . Grace . Glow</span>
+      </div>
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li>
+        <a href="products.html"><i class="fa-solid fa-bag-shopping"></i> Products <i class="fa-solid fa-chevron-down caret"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="products.html#kidwear"><span class="emoji-ic">👗</span> Kid Wear</a></li>
+          <li><a href="products.html#handbags"><span class="emoji-ic">👜</span> Handbags</a></li>
+          <li><a href="products.html#gadgets"><span class="emoji-ic">⌚</span> Gadgets</a></li>
+          <li><a href="products.html#jewelry"><span class="emoji-ic">💎</span> Jewelry</a></li>
+        </ul>
+      </li>
+      <li><a href="about.html"><i class="fa-solid fa-heart"></i> About Us</a></li>
+      <li><a href="contact.html" class="active"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search products...">
+        <button onclick="doSearch()"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+      <div class="icon-btn" title="Wishlist">
+        <i class="fa-regular fa-heart"></i>
+      </div>
+      <div class="icon-btn" id="cartIcon" title="Cart" onclick="toggleCartPopup()">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-badge" id="cartCount">0</span>
+      </div>
+      <button class="hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </nav>
+</header>
+
+<section class="page-banner">
+  <h1>Contact Us</h1>
+  <div class="crumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Contact Us</div>
+</section>
+
+<section class="section-pad" style="padding-top:60px">
+  <div class="contact-grid">
+
+    <div class="contact-info">
+      <span class="eyebrow" style="justify-content:flex-start"><i class="fa-solid fa-comments"></i> Let's Talk</span>
+      <h2 class="section-title">We'd Love to<br>Hear From You</h2>
+      <p class="section-sub" style="margin-bottom:34px">Got a question about an order, sizing, or just want to say hi? Reach out — we usually reply within a few hours.</p>
+
+      <div class="info-card">
+        <div class="info-ic"><i class="fa-solid fa-envelope"></i></div>
+        <div>
+          <h4>Email Us</h4>
+          <a href="mailto:aryzelcreationhouse@gmail.com">aryzelcreationhouse@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-ic"><i class="fa-solid fa-phone"></i></div>
+        <div>
+          <h4>Call / WhatsApp</h4>
+          <a href="tel:03700014029">0370 0014029</a>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-ic"><i class="fa-solid fa-location-dot"></i></div>
+        <div>
+          <h4>Based In</h4>
+          <span>Karachi, Pakistan</span>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-ic"><i class="fa-solid fa-clock"></i></div>
+        <div>
+          <h4>Response Time</h4>
+          <span>Mon–Sat, 10am – 8pm</span>
+        </div>
+      </div>
+
+      <a href="https://wa.me/923700014029" class="btn-glossy btn-pink" style="margin-top:16px">
+        <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+      </a>
+    </div>
+
+    <div class="contact-form-box">
+      <h3><i class="fa-solid fa-paper-plane"></i> Send a Message</h3>
+      <form id="contactForm" onsubmit="submitContactForm(event)">
+        <div class="form-row">
+          <input type="text" placeholder="Your name" required id="cName">
+          <input type="tel" placeholder="Phone number" required id="cPhone">
+        </div>
+        <input type="email" placeholder="Email address" required id="cEmail" style="width:100%; padding:12px 14px; border:1.5px solid var(--gold-light); border-radius:12px; font-family:'Poppins'; font-size:14px; outline:none; margin-bottom:12px;">
+
+        <select id="cSubject" required style="width:100%; padding:12px 14px; border:1.5px solid var(--gold-light); border-radius:12px; font-family:'Poppins'; font-size:14px; outline:none; margin-bottom:12px;">
+          <option value="" disabled selected>What's this about?</option>
+          <option value="order">Order Inquiry</option>
+          <option value="product">Product Question</option>
+          <option value="complaint">Complaint / Issue</option>
+          <option value="other">Something Else</option>
+        </select>
+
+        <textarea placeholder="Write your message..." rows="5" required id="cMessage"></textarea>
+
+        <button type="submit" class="btn-glossy btn-gold" style="width:100%; justify-content:center; margin-top:14px;">
+          <i class="fa-solid fa-paper-plane"></i> Send Message
+        </button>
+
+        <div class="form-success" id="formSuccess">
+          <i class="fa-solid fa-circle-check"></i> Thank you! We'll get back to you shortly.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad" style="background:var(--pink-pale)">
+  <div class="section-head center">
+    <span class="eyebrow">Quick Answers</span>
+    <h2 class="section-title">Frequently Asked</h2>
+  </div>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        How long does delivery take? <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-a"><p>Orders within Karachi typically arrive in 1-2 days, and other cities within 3-5 working days.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Do you offer Cash on Delivery? <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-a"><p>Yes! COD is available across most cities in Pakistan along with online bank transfer.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Can I exchange a product? <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-a"><p>Yes, we offer easy exchange within 3 days of delivery if the item is unused and in original packaging.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        How do I place a bulk order? <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-a"><p>Message us directly on WhatsApp with the items and quantities — we'll quote you a special bulk rate.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check"></i> <span id="toastMsg">Added to cart!</span></div>
+
+<!-- ============== CART POPUP ============== -->
+<div class="overlay" id="cartOverlay">
+  <div class="modal-box cart-modal">
+    <button class="modal-close" onclick="toggleCartPopup()"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-pad">
+      <h2 class="section-title" style="font-size:24px"><i class="fa-solid fa-bag-shopping"></i> Your Cart</h2>
+      <div id="cartItemsBox"></div>
+      <div class="cart-total-row">
+        <span>Total</span>
+        <strong id="cartTotalText">Rs. 0</strong>
+      </div>
+      <a href="https://wa.me/923700014029" class="btn-glossy btn-pink" style="width:100%; justify-content:center;">
+        <i class="fa-brands fa-whatsapp"></i> Checkout via WhatsApp
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="brand-name">Aryzel Creation House</div>
+      <p>Your one-stop boutique for adorable kidswear, glossy handbags, glowing jewelry and trendy gadgets — curated with love in Pakistan.</p>
+      <div class="footer-socials">
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://wa.me/923700014029"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="products.html#kidwear">Kid Wear</a></li>
+        <li><a href="products.html#handbags">Handbags</a></li>
+        <li><a href="products.html#gadgets">Gadgets</a></li>
+        <li><a href="products.html#jewelry">Jewelry</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get In Touch</h4>
+      <ul class="footer-contact">
+        <li><i class="fa-solid fa-user ic"></i> CEO: Areeba Aqib</li>
+        <li><i class="fa-solid fa-envelope ic"></i> aryzelcreationhouse@gmail.com</li>
+        <li><i class="fa-solid fa-phone ic"></i> 0370 0014029</li>
+        <li><i class="fa-solid fa-location-dot ic"></i> Karachi, Pakistan</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 <span>Aryzel Creation House</span>. All rights reserved. Founded by Areeba Aqib.
+  </div>
+</footer>
+
+<style>
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 60px;
+}
+.info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: #fff;
+  border: 1.5px solid var(--pink-pale);
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+  transition: all 0.3s ease;
+}
+.info-card:hover { border-color: var(--gold); box-shadow: 0 12px 28px var(--shadow-pink); transform: translateX(4px); }
+.info-ic {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pink-pale), #fff);
+  border: 1.5px solid var(--gold-light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; color: var(--pink-deep);
+  flex-shrink: 0;
+}
+.info-card h4 { font-size: 14px; color: var(--text-dark); margin-bottom: 4px; }
+.info-card a, .info-card span { font-size: 13.5px; color: var(--text-muted); }
+.info-card a:hover { color: var(--pink-deep); }
+
+.contact-form-box {
+  background: #fff;
+  border: 2px solid var(--gold);
+  border-radius: 24px;
+  padding: 36px;
+  box-shadow: 0 24px 60px var(--shadow-pink);
+}
+.contact-form-box h3 {
+  font-size: 20px;
+  color: var(--pink-deep);
+  margin-bottom: 22px;
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Playfair Display', serif;
+}
+.contact-form-box .form-row { display: flex; gap: 12px; margin-bottom: 12px; }
+.contact-form-box .form-row input {
+  flex: 1; padding: 12px 14px; border: 1.5px solid var(--gold-light);
+  border-radius: 12px; font-family: 'Poppins'; font-size: 14px; outline: none;
+}
+.contact-form-box textarea {
+  width: 100%; padding: 12px 14px; border: 1.5px solid var(--gold-light);
+  border-radius: 12px; font-family: 'Poppins'; font-size: 14px; outline: none; resize: vertical;
+}
+.contact-form-box input:focus, .contact-form-box select:focus, .contact-form-box textarea:focus { border-color: var(--pink-main); }
+.form-success {
+  display: none;
+  margin-top: 16px;
+  background: #e9f7ef;
+  color: #1d7a45;
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: 13.5px;
+  align-items: center;
+  gap: 8px;
+}
+.form-success.show { display: flex; }
+
+.faq-list { max-width: 760px; margin: 0 auto; }
+.faq-item {
+  background: #fff;
+  border: 1.5px solid var(--gold-light);
+  border-radius: 16px;
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+.faq-q {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 18px 22px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 14.5px;
+  color: var(--text-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.faq-q i { color: var(--pink-deep); transition: transform 0.3s ease; }
+.faq-item.open .faq-q i { transform: rotate(180deg); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding: 0 22px;
+}
+.faq-item.open .faq-a { max-height: 140px; padding-bottom: 18px; }
+.faq-a p { font-size: 13.5px; color: var(--text-muted); line-height: 1.7; }
+
+@media (max-width: 980px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 560px) {
+  .contact-form-box .form-row { flex-direction: column; }
+  .contact-form-box { padding: 26px; }
+}
+</style>
+
+<script src="script.js"></script>
+<script>
+  function submitContactForm(event) {
+    event.preventDefault();
+    document.getElementById("contactForm").reset();
+    const successBox = document.getElementById("formSuccess");
+    successBox.classList.add("show");
+    setTimeout(() => successBox.classList.remove("show"), 5000);
+  }
+
+  function toggleFaq(btn) {
+    const item = btn.closest(".faq-item");
+    const wasOpen = item.classList.contains("open");
+    document.querySelectorAll(".faq-item").forEach(i => i.classList.remove("open"));
+    if (!wasOpen) item.classList.add("open");
+  }
+</script>
+</body>
+</html>
